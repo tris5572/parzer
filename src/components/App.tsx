@@ -1,15 +1,20 @@
-import styled from "styled-components";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Index } from "./Index";
+import { Parts } from "./Parts";
 
-const HelloWorld = styled.div`
-  color: ${(p) => p.theme.colors.main};
-`;
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Index />,
+  },
+  {
+    path: "/parts",
+    element: <Parts />,
+  },
+]);
 
 function App() {
-  return (
-    <>
-      <HelloWorld>Hello World!</HelloWorld>
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
