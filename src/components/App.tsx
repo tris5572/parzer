@@ -1,20 +1,45 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { Index } from "./Index";
-import { Parts } from "./Parts";
+// ルーティングは以下のURLのサンプルを参照。
+// https://github.com/remix-run/react-router/blob/dev/examples/route-objects/src/App.tsx
 
-const router = createBrowserRouter([
+import { Outlet, RouteObject, useRoutes } from "react-router-dom";
+
+import { Index } from "@/components/Index";
+import { Parts } from "@/components/Parts";
+import { Sidebar } from "@/components/Sidebar";
+
+const router: RouteObject[] = [
   {
     path: "/",
-    element: <Index />,
+    element: <Layout />,
+    children: [
+      { index: true, element: <Index /> },
+      {
+        path: "parts",
+        element: <Parts />,
+        children: [
+          { index: true, element: <Parts /> },
+          {
+            path: "/parts/:id",
+            element: <Parts />,
+          },
+        ],
+      },
+    ],
   },
-  {
-    path: "/parts",
-    element: <Parts />,
-  },
-]);
+];
 
 function App() {
-  return <RouterProvider router={router} />;
+  const element = useRoutes(router);
+  return <>{element};</>;
+}
+
+function Layout() {
+  return (
+    <>
+      <Sidebar />
+      <Outlet />
+    </>
+  );
 }
 
 export default App;

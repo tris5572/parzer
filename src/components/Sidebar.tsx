@@ -1,6 +1,7 @@
-import { Pages } from "@/misc/constants";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
+
+import { Pages } from "@/misc/constants";
 
 /** サイドバーの余白を空けて、コンテンツを入れる部分のスタイル */
 export const Contents = styled.div`
@@ -42,9 +43,11 @@ const SelectedItem = styled(Item)`
   font-weight: bold;
 `;
 
-type Props = { page?: Pages };
+// type Props = { page?: Pages };
 
-export function Sidebar(props: Props) {
+export function Sidebar() {
+  const path = useLocation().pathname;
+
   return (
     <Wrapper>
       <L to="/">
@@ -52,15 +55,11 @@ export function Sidebar(props: Props) {
       </L>
 
       <L to="/">
-        {props.page == undefined || props.page === Pages.Index ? (
-          <SelectedItem>Main</SelectedItem>
-        ) : (
-          <Item>Main</Item>
-        )}
+        {path === "/" ? <SelectedItem>Main</SelectedItem> : <Item>Main</Item>}
       </L>
 
-      <L to="/parts" style={{ textDecoration: "none" }}>
-        {props.page === Pages.Parts ? (
+      <L to="/parts">
+        {path.startsWith(Pages.Parts) ? (
           <SelectedItem>Parts</SelectedItem>
         ) : (
           <Item>Parts</Item>
