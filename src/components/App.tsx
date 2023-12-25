@@ -3,9 +3,9 @@
 
 import { Outlet, RouteObject, useRoutes } from "react-router-dom";
 
+import { Contents, Sidebar } from "@/components/Sidebar";
 import { Index } from "@/components/Index";
 import { Parts } from "@/components/Parts";
-import { Sidebar } from "@/components/Sidebar";
 
 const router: RouteObject[] = [
   {
@@ -14,7 +14,7 @@ const router: RouteObject[] = [
     children: [
       { index: true, element: <Index /> },
       {
-        path: "parts",
+        path: "/parts",
         element: <Parts />,
         children: [
           { index: true, element: <Parts /> },
@@ -37,7 +37,9 @@ function Layout() {
   return (
     <>
       <Sidebar />
-      <Outlet />
+      <Contents>
+        <Outlet />
+      </Contents>
     </>
   );
 }
