@@ -1,16 +1,16 @@
-// ルーティングは以下のURLのサンプルを参照。
-// https://github.com/remix-run/react-router/blob/dev/examples/route-objects/src/App.tsx
-
-import { Outlet, RouteObject, useRoutes } from "react-router-dom";
+import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import { Contents, Sidebar } from "@/components/Sidebar";
 import { Index } from "@/components/Index";
 import { Parts } from "@/components/Parts";
+import { ErrorPage } from "./Error";
 
-const router: RouteObject[] = [
+// ルーティングの設定
+const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
+    errorElement: <ErrorPage />,
     children: [
       { index: true, element: <Index /> },
       {
@@ -26,11 +26,10 @@ const router: RouteObject[] = [
       },
     ],
   },
-];
+]);
 
-function App() {
-  const element = useRoutes(router);
-  return <>{element};</>;
+export function App() {
+  return <RouterProvider router={router} />;
 }
 
 function Layout() {
@@ -43,5 +42,3 @@ function Layout() {
     </>
   );
 }
-
-export default App;
