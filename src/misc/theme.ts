@@ -1,7 +1,10 @@
 export const THEME = {
   colors: {
-    main: "red",
-    dark: "",
+    text: {
+      light: "hsl(184, 75%, 30%)",
+      main: "hsl(184, 75%, 20%)",
+      dark: "hsl(184, 75%, 10%)",
+    },
     key: {
       xxlight: "hsl(184, 75%, 98%)",
       xlight: "hsl(184, 75%, 92%)",
