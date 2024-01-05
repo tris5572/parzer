@@ -4,6 +4,7 @@ export type PartsId = string;
 /**
  * パーツの情報を保持する型。
  * 永続化する情報だけとして、計算可能な値は含めない。
+ * TODO: 使用開始日を追加
  */
 export type PartsItem = {
   /** ユニークなID */

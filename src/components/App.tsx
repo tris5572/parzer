@@ -2,7 +2,7 @@ import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import { Contents, Sidebar } from "@/components/Sidebar";
 import { Index } from "@/components/Index";
-import { Parts } from "@/components/Parts";
+import { Parts } from "@/components/parts/Parts";
 import { ErrorPage } from "./Error";
 
 // ルーティングの設定

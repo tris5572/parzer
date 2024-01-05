@@ -27,7 +27,8 @@ export const DUMMY_DATA: DataType = {
     {
       id: "ccccccccc",
       name: "Continental GP5000S TR",
-      description: "",
+      description:
+        "3,000km時点で後ろから前へ組み換え。ああああああああああああああああああああああああああああああああああああああああああ",
       kind: "前タイヤ",
       limit: 5000,
     },
