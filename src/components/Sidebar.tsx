@@ -58,6 +58,14 @@ export function Sidebar() {
         {path === "/" ? <SelectedItem>Main</SelectedItem> : <Item>Main</Item>}
       </L>
 
+      <L to="/activities">
+        {path.startsWith(Pages.Activities) ? (
+          <SelectedItem>Activities</SelectedItem>
+        ) : (
+          <Item>Activities</Item>
+        )}
+      </L>
+
       <L to="/parts">
         {path.startsWith(Pages.Parts) ? (
           <SelectedItem>Parts</SelectedItem>

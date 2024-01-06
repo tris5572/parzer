@@ -1,3 +1,22 @@
+export type LogId = string;
+
+export type LogItem = {
+  /** ユニークなID */
+  id: LogId;
+  /** 名前 */
+  name: string;
+  /** 日付 */
+  date: Date;
+  /** 詳細 */
+  description: string;
+  /** 距離 */
+  distance: number;
+  /** 使用したパーツ */
+  parts: PartsId[];
+  /** 使用したセット */
+  sets: SetId[];
+};
+
 /** パーツのID */
 export type PartsId = string;
 
