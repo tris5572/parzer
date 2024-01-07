@@ -1,31 +1,31 @@
-import { ItemSet, LogItem, PartsItem } from "./type";
+import { ItemSet, ActivitiesItem as ActivitiesItem, PartsItem } from "./type";
 
 /** データファイルの型 */
 export type DataType = {
-  log: LogItem[];
+  activities: ActivitiesItem[];
   parts: PartsItem[];
   sets: ItemSet[];
 };
 
 /** 試験用のダミーデータ用オブジェクト */
 export const DUMMY_DATA: DataType = {
-  log: [
-    {
-      id: "r1",
-      name: "最初のライド",
-      date: new Date(2023, 1, 2),
-      description: "",
-      distance: 100,
-      parts: ["p1", "p3"],
-      sets: [],
-    },
+  activities: [
     {
       id: "r2",
       name: "2回目のライド",
-      date: new Date(2023, 3, 4),
+      date: new Date(2023, 1, 2),
       description: "ロングライドしてみた感じ",
       distance: 321,
       parts: ["p1", "p2"],
+      sets: [],
+    },
+    {
+      id: "r1",
+      name: "最初のライド",
+      date: new Date(2023, 0, 1),
+      description: "",
+      distance: 100,
+      parts: ["p1", "p3"],
       sets: [],
     },
   ],

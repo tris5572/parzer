@@ -1,6 +1,6 @@
 export type LogId = string;
 
-export type LogItem = {
+export type ActivitiesItem = {
   /** ユニークなID */
   id: LogId;
   /** 名前 */
