@@ -48,7 +48,7 @@ export type PartsItemData = PartsItem & {
   /** 累積距離 */
   distance: number;
   /** パーツが含まれるセットのリスト */
-  sets: SetId[];
+  // sets: SetId[];
 };
 
 // ---------------------------------------------------------------
@@ -68,4 +68,21 @@ export type ItemSet = {
   name: string;
   /** 含むパーツの一覧 */
   parts: PartsId[];
+};
+
+// ---------------------------------------------------------------
+// データ関係
+// ---------------------------------------------------------------
+
+/** データファイルの型 */
+export type DataFileType = {
+  activities: ActivitiesItem[];
+  parts: PartsItem[];
+  sets: ItemSet[];
+};
+
+export type DataType = {
+  activities: ActivitiesItem[];
+  parts: PartsItemData[];
+  sets: ItemSet[];
 };

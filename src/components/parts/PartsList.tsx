@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 // 表示テスト用にデータを変換する
 function dataFromItem(item: PartsItem): PartsItemData {
-  return { distance: 6000, sets: [], ...item };
+  return { distance: 6000, ...item };
 }
 
 const Table = styled.table`

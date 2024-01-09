@@ -1,14 +1,38 @@
-import { ItemSet, ActivitiesItem as ActivitiesItem, PartsItem } from "./type";
+import { DataFileType, DataType } from "./type";
 
-/** データファイルの型 */
-export type DataType = {
-  activities: ActivitiesItem[];
-  parts: PartsItem[];
-  sets: ItemSet[];
-};
+/**
+ * アクティビティごとの使用パーツのデータを元に、各パーツの走行距離を計算する。
+ * @param data ファイルとして保存されているようなデータ
+ * @returns 走行距離を適用した結果のデータ
+ */
+export function calculateData(data: DataFileType): DataType {
+  const output: DataType = {
+    activities: data.activities,
+    parts: [],
+    sets: data.sets,
+  };
+
+  // データに不足している、各パーツの走行距離を付加する。
+  for (const p of data.parts) {
+    output.parts.push({ distance: 0, ...p });
+  }
+
+  // 各アクティビティから、使用したパーツに対して距離を加算する。
+  for (const act of data.activities) {
+    for (const actParts of act.parts) {
+      for (const outParts of output.parts) {
+        if (outParts.id === actParts) {
+          outParts.distance += act.distance;
+        }
+      }
+    }
+  }
+
+  return output;
+}
 
 /** 試験用のダミーデータ用オブジェクト */
-export const DUMMY_DATA: DataType = {
+export const DUMMY_DATA: DataFileType = {
   activities: [
     {
       id: "r2",
