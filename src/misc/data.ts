@@ -1,4 +1,4 @@
-import { DataFileType, DataType } from "./type";
+import { DataFileType, DataType, PartsId } from "./type";
 
 /**
  * アクティビティごとの使用パーツのデータを元に、各パーツの走行距離を計算する。
@@ -19,7 +19,17 @@ export function calculateData(data: DataFileType): DataType {
 
   // 各アクティビティから、使用したパーツに対して距離を加算する。
   for (const act of data.activities) {
-    for (const actParts of act.parts) {
+    // 使用したセットからパーツ一覧にして、重複を排除する
+    const a: PartsId[] = [...act.parts]; // 使用パーツの一覧
+    for (const s of act.sets) {
+      const b = data.sets.find((v) => v.id === s);
+      if (b != undefined) {
+        a.push(...b.parts);
+      }
+    }
+    const parts = Array.from(new Set(a));
+
+    for (const actParts of parts) {
       for (const outParts of output.parts) {
         if (outParts.id === actParts) {
           outParts.distance += act.distance;
