@@ -54,7 +54,7 @@ type Props = {
   // parts: PartsItemData[];
 };
 
-export function PartsList(props: Props) {
+export function PartsList(_props: Props) {
   const parts = DUMMY_DATA.parts;
 
   return (

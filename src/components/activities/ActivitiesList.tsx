@@ -38,7 +38,7 @@ type Props = {
   // parts: PartsItemData[];
 };
 
-export function ActivitiesList(props: Props) {
+export function ActivitiesList(_props: Props) {
   const activities = DUMMY_DATA.activities;
 
   return (
