@@ -37,8 +37,6 @@ const router = createBrowserRouter(
 );
 
 export function App() {
-  console.log("1:", process.env.GITHUB_PAGES);
-  console.log("2:", process.env.GITHUB_ACTIONS);
   return <RouterProvider router={router} />;
 }
 
