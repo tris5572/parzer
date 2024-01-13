@@ -1,11 +1,6 @@
-import { DUMMY_DATA } from "@/misc/data";
-import { PartsItem, PartsItemData } from "@/misc/type";
+import { useDataStore } from "@/misc/store";
+import { PartsItemData } from "@/misc/type";
 import styled from "styled-components";
-
-// 表示テスト用にデータを変換する
-function dataFromItem(item: PartsItem): PartsItemData {
-  return { distance: 6000, ...item };
-}
 
 const Table = styled.table`
   border-spacing: 0;
@@ -26,6 +21,7 @@ const Td = styled.td`
 
 const Name = styled(Td)`
   font-weight: bold;
+  white-space: normal;
 `;
 const Kind = styled(Td)`
   font-size: small;
@@ -33,7 +29,7 @@ const Kind = styled(Td)`
 const Description = styled(Td)`
   font-size: small;
   white-space: normal;
-`; // 例外的に詳細だけは改行させる
+`;
 const DistanceStyle = styled(Td)`
   text-align: right;
 `;
@@ -55,14 +51,14 @@ type Props = {
 };
 
 export function PartsList(_props: Props) {
-  const parts = DUMMY_DATA.parts;
+  const parts = useDataStore((state) => state.parts);
 
   return (
     <Table>
       <Header />
       <tbody>
         {parts.map((v) => (
-          <Row data={dataFromItem(v)} key={v.id} />
+          <Row data={v} key={v.id} />
         ))}
       </tbody>
     </Table>

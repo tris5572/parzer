@@ -1,4 +1,4 @@
-import { DUMMY_DATA } from "@/misc/data";
+import { useDataStore } from "@/misc/store";
 import { ActivitiesItem } from "@/misc/type";
 import styled from "styled-components";
 
@@ -39,7 +39,7 @@ type Props = {
 };
 
 export function ActivitiesList(_props: Props) {
-  const activities = DUMMY_DATA.activities;
+  const activities = useDataStore((state) => state.activities);
 
   return (
     <Table>
