@@ -4,7 +4,8 @@ import { Contents, Sidebar } from "@/components/Sidebar";
 import { Index } from "@/components/Index";
 import { Parts } from "@/components/parts/Parts";
 import { ErrorPage } from "./Error";
-import { Activities } from "./activities/Activities";
+import { Activities } from "@/components/activities/Activities";
+import { ActivityEdit } from "@/components/activities/ActivityEdit";
 
 // ルーティングの設定
 const router = createBrowserRouter(
@@ -17,7 +18,18 @@ const router = createBrowserRouter(
         { index: true, element: <Index /> },
         {
           path: "/activities",
-          element: <Activities />,
+          // element: <Activities />,
+          children: [
+            { index: true, element: <Activities /> },
+            {
+              path: "/activities/:mode/",
+              element: <ActivityEdit />,
+            },
+            {
+              path: "/activities/:mode/:id",
+              element: <ActivityEdit />,
+            },
+          ],
         },
         {
           path: "/parts",

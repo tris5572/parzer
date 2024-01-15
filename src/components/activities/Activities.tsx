@@ -1,6 +1,6 @@
-// import { PartsList } from "./PartsList";
 import styled from "styled-components";
 import { ActivitiesList } from "./ActivitiesList";
+import { AddButton } from "../common/AddButton";
 
 const Title = styled.h2`
   background: ${(p) => p.theme.colors.key.dark};
@@ -15,6 +15,7 @@ export function Activities() {
   return (
     <>
       <Title>Activities</Title>
+      <AddButton link="/activities/edit/" />
       <ActivitiesList />
       あ<br />あ<br />あ<br />あ<br />あ<br />あ<br />あ<br />あ<br />あ<br />
       あ<br />あ<br />あ<br />あ<br />あ<br />あ<br />あ<br />あ<br />あ<br />
