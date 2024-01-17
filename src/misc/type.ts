@@ -1,12 +1,12 @@
-export type LogId = string;
+export type ActivityId = string;
 
 export type ActivitiesItem = {
   /** ユニークなID */
-  id: LogId;
+  id: ActivityId;
   /** 名前 */
   name: string;
   /** 日付 */
-  date: Date;
+  date: string;
   /** 詳細 */
   description: string;
   /** 距離 */

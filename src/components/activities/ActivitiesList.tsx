@@ -56,7 +56,7 @@ export function ActivitiesList(_props: Props) {
 function Row({ data }: { data: ActivitiesItem }) {
   return (
     <tr key={data.id}>
-      <Td>{data.date.toLocaleDateString()}</Td>
+      <Td>{data.date}</Td>
       <Name>{data.name}</Name>
       <Distance data={data} />
       <Td>パーツ...</Td>

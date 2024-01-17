@@ -47,7 +47,7 @@ export const DUMMY_DATA: DataFileType = {
     {
       id: "r2",
       name: "2回目のライド",
-      date: new Date(2023, 1, 2),
+      date: "2023-01-02",
       description: "ロングライドしてみた感じ",
       distance: 321,
       parts: ["p1", "p2"],
@@ -56,7 +56,7 @@ export const DUMMY_DATA: DataFileType = {
     {
       id: "r1",
       name: "最初のライド",
-      date: new Date(2023, 0, 1),
+      date: "2023-02-03",
       description: "",
       distance: 100,
       parts: ["p1", "p3"],
