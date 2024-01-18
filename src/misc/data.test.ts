@@ -1,5 +1,5 @@
-import { calculateData } from "./data";
-import { ActivitiesItem, DataFileType, ItemSet, PartsItem } from "./type";
+import { activityById, calculateData } from "./data";
+import { ActivitiesItem, DataFileType, DataType, ItemSet, PartsItem, PartsItemData } from "./type";
 
 describe("calculateData()", () => {
   it("パーツのみで計算", () => {
@@ -7,7 +7,7 @@ describe("calculateData()", () => {
       {
         id: "",
         name: "",
-        date: new Date(2023, 1, 1),
+        date: "2023-01-02",
         description: "",
         distance: 123,
         parts: ["p1", "p2"],
@@ -16,7 +16,7 @@ describe("calculateData()", () => {
       {
         id: "",
         name: "",
-        date: new Date(2023, 2, 2),
+        date: "2023-03-04",
         description: "",
         distance: 77,
         parts: ["p1", "p3"],
@@ -67,7 +67,7 @@ describe("calculateData()", () => {
       {
         id: "",
         name: "",
-        date: new Date(2023, 1, 1),
+        date: "2023-01-02",
         description: "",
         distance: 123,
         parts: ["p1", "p2"],
@@ -76,7 +76,7 @@ describe("calculateData()", () => {
       {
         id: "",
         name: "",
-        date: new Date(2023, 2, 2),
+        date: "2023-03-04",
         description: "",
         distance: 77,
         parts: [],
@@ -123,5 +123,45 @@ describe("calculateData()", () => {
     expect(result.parts.find((v) => v.id === "p3")?.distance).toBe(77);
     expect(result.parts.find((v) => v.id === "p4")?.distance).toBe(0);
     expect(result.parts.find((v) => v.id === "p0")).toBeUndefined();
+  });
+});
+
+describe("activityById()", () => {
+  it("アクティビティのID検索", () => {
+    const activities: ActivitiesItem[] = [
+      {
+        id: "a",
+        name: "ActivityA",
+        date: "2023-01-02",
+        description: "",
+        distance: 123,
+        parts: ["p1", "p2"],
+        sets: ["s1"],
+      },
+      {
+        id: "b",
+        name: "ActivityB",
+        date: "2023-03-04",
+        description: "",
+        distance: 77,
+        parts: [],
+        sets: ["s2", "s9"],
+      },
+    ];
+    const parts: PartsItemData[] = [
+      {
+        id: "a",
+        name: "PartsA",
+        description: "",
+        kind: "",
+        distance: 1000,
+        limit: undefined,
+      },
+    ];
+    const sets: ItemSet[] = [{ id: "a", name: "S1", parts: ["p1", "p2"] }];
+    const source: DataType = { activities, parts, sets };
+    expect(activityById(source, "a")?.name).toBe("ActivityA");
+    expect(activityById(source, "b")?.name).toBe("ActivityB");
+    expect(activityById(source, "z")).toBeUndefined();
   });
 });

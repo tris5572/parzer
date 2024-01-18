@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { DUMMY_DATA, calculateData } from "./data";
+import { DUMMY_DATA, activityById, calculateData } from "./data";
 import { ActivitiesItem, ActivityId, DataFileType, DataType } from "./type";
 
 export type DataStore = DataType & {
@@ -27,10 +27,7 @@ export const useDataStore = create<DataStore>((set, get) => ({
   },
 
   activityById(id) {
-    if (id == undefined) {
-      return undefined;
-    }
-    return get().activities.find((v) => v.id === id);
+    return activityById(get(), id);
   },
 
   addPartsItem: () => {},

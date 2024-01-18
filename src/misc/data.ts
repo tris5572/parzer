@@ -1,4 +1,4 @@
-import { DataFileType, DataType, PartsId } from "./type";
+import { ActivitiesItem, ActivityId, DataFileType, DataType, PartsId } from "./type";
 
 /**
  * アクティビティごとの使用パーツのデータを元に、各パーツの走行距離を計算する。
@@ -40,6 +40,21 @@ export function calculateData(data: DataFileType): DataType {
 
   return output;
 }
+
+/**
+ * データから、指定されたIDを持つアクティビティを返す。
+ * @param data 検索対象のデータ
+ * @param id アクティビティのIDまたはundefined
+ * @returns 当該アクティビティのデータ。見付からなかった場合はundefined
+ */
+export function activityById(data: DataType, id?: ActivityId): ActivitiesItem | undefined {
+  if (id == undefined) {
+    return undefined;
+  }
+  return data.activities.find((v) => v.id === id);
+}
+
+// -----------------------------------------------------------------------------------------
 
 /** 試験用のダミーデータ用オブジェクト */
 export const DUMMY_DATA: DataFileType = {
