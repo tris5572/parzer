@@ -1,12 +1,7 @@
-import { PartsList } from "./PartsList";
 import styled from "styled-components";
 
-// const data = DUMMY_DATA.parts; // 表示テスト用ダミーデータ
-
-// // 表示テスト用にデータを変換する
-// function dataFromItem(item: PartsItem): PartsItemData {
-//   return { distance: 0, sets: [], ...item };
-// }
+import { PartsList } from "@/components/parts/PartsList";
+import { AddButton } from "@/components/common/AddButton";
 
 const Title = styled.h2`
   background: ${(p) => p.theme.colors.key.dark};
@@ -21,6 +16,7 @@ export function Parts() {
   return (
     <>
       <Title>Parts</Title>
+      <AddButton link="/parts/edit/" />
       <PartsList />
       あ<br />あ<br />あ<br />あ<br />あ<br />あ<br />あ<br />あ<br />あ<br />
       あ<br />あ<br />あ<br />あ<br />あ<br />あ<br />あ<br />あ<br />あ<br />

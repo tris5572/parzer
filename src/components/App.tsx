@@ -6,6 +6,7 @@ import { Parts } from "@/components/parts/Parts";
 import { ErrorPage } from "./Error";
 import { Activities } from "@/components/activities/Activities";
 import { ActivityEdit } from "@/components/activities/ActivityEdit";
+import { PartsEdit } from "./parts/PartsEdit";
 
 // ルーティングの設定
 const router = createBrowserRouter(
@@ -18,7 +19,6 @@ const router = createBrowserRouter(
         { index: true, element: <Index /> },
         {
           path: "/activities",
-          // element: <Activities />,
           children: [
             { index: true, element: <Activities /> },
             {
@@ -33,12 +33,15 @@ const router = createBrowserRouter(
         },
         {
           path: "/parts",
-          element: <Parts />,
           children: [
             { index: true, element: <Parts /> },
             {
-              path: "/parts/:id",
-              element: <Parts />,
+              path: "/parts/:mode/",
+              element: <PartsEdit />,
+            },
+            {
+              path: "/parts/:mode/:id/",
+              element: <PartsEdit />,
             },
           ],
         },
