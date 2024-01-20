@@ -36,7 +36,7 @@ export function ActivityEdit() {
   const values: ActivitiesItem = activity ?? {
     id: "", // TODO: ユニークにする
     name: "",
-    date: "", // TODO: 今日
+    date: "2020-01-01", // TODO: 今日
     description: "",
     distance: 0,
     parts: [],

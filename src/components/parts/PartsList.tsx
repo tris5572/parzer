@@ -12,6 +12,9 @@ const Th = styled.th`
   border-top: 1px solid ${(p) => p.theme.colors.key.dark};
   border-bottom: 1px solid ${(p) => p.theme.colors.key.dark};
 `;
+const Tr = styled.tr<{ $isInvalid?: boolean }>`
+  background: ${(props) => (props.$isInvalid ? "hsl(0, 0%, 80%)" : "transparent")};
+`;
 const Td = styled.td`
   padding: 0.2rem 1rem;
   border-top: 1px solid transparent;
@@ -23,9 +26,9 @@ const Name = styled(Td)`
   font-weight: bold;
   white-space: normal;
 `;
-const Kind = styled(Td)`
-  font-size: small;
-`;
+// const Kind = styled(Td)`
+//   font-size: small;
+// `;
 const Description = styled(Td)`
   font-size: small;
   white-space: normal;
@@ -44,6 +47,9 @@ const DistanceUnit = styled.span`
 `;
 const LimitStyle = styled(Td)`
   text-align: right;
+`;
+const StartDate = styled(Td)`
+  font-size: small;
 `;
 
 type Props = {
@@ -67,14 +73,15 @@ export function PartsList(_props: Props) {
 
 function Row({ data }: { data: PartsItemData }) {
   return (
-    <tr key={data.id}>
+    <Tr $isInvalid={data.invalid} key={data.id}>
       <Name>{data.name}</Name>
       <Distance data={data} />
       <Limit data={data} />
-      <Kind>{data.kind}</Kind>
+      {/* <Kind>{data.kind}</Kind> */}
+      <StartDate>{data.startDate}</StartDate>
       <Description>{data.description}</Description>
       <Td>編集</Td>
-    </tr>
+    </Tr>
   );
 }
 
@@ -95,8 +102,7 @@ function Distance({ data }: { data: PartsItemData }) {
 }
 
 function Limit({ data }: { data: PartsItemData }) {
-  const limitStr =
-    data.limit != undefined ? data.limit?.toLocaleString() : "ー";
+  const limitStr = data.limit != undefined ? data.limit?.toLocaleString() : "ー";
   return (
     <LimitStyle>
       <DistanceNumber>{limitStr}</DistanceNumber>
@@ -112,7 +118,8 @@ function Header() {
         <Th>名前</Th>
         <Th>走行距離</Th>
         <Th>限度距離</Th>
-        <Th>種類</Th>
+        <Th>使用開始日</Th>
+        {/* <Th>種類</Th> */}
         <Th>詳細</Th>
         <Th>編集</Th>
       </tr>

@@ -91,6 +91,7 @@ export const DUMMY_DATA: DataFileType = {
       name: "Ultegraホイール 36mm",
       description: "",
       kind: "ホイール",
+      startDate: "2023-04-05",
     },
     {
       id: "p3",
@@ -99,6 +100,13 @@ export const DUMMY_DATA: DataFileType = {
         "3,000km時点で後ろから前へ組み換え。ああああああああああああああああああああああああああああああああああああああああああ",
       kind: "前タイヤ",
       limit: 5000,
+    },
+    {
+      id: "p5",
+      name: "古いタイヤ（無効）",
+      description: "",
+      kind: "後タイヤ",
+      invalid: true,
     },
   ],
   sets: [],

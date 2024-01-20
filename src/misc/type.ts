@@ -1,3 +1,6 @@
+/** 日付の型。作ってみたものの、あまりメリットがないので使用していない。 */
+// export type DateType = `${number}${number}${number}${number}-${number}${number}-${number}${number}`;
+
 export type ActivityId = string;
 
 export type ActivitiesItem = {
@@ -33,11 +36,15 @@ export type PartsItem = {
   /** 詳細 */
   description: string;
   /** 種類 */
-  kind: string;
+  kind?: string;
   /** 使用限界距離 */
   limit?: number;
   /** アイコン */
   // icon:string;
+  /** 使用開始日 */
+  startDate?: string;
+  /** 無効フラグ */
+  invalid?: boolean;
 };
 
 /**
