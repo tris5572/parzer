@@ -34,11 +34,11 @@ const DistanceUnit = styled.span`
   font-size: small;
 `;
 
-type Props = {
-  // parts: PartsItemData[];
-};
+// type Props = {
+//   // parts: PartsItemData[];
+// };
 
-export function ActivitiesList(props: Props) {
+export function ActivitiesList() {
   const activities = useDataStore((state) => state.activities);
 
   return (
