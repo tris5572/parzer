@@ -1,30 +1,27 @@
-# React + TypeScript + Vite
+# Parzer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🚧まだ制作の初期段階であり、全然動作しません🚧
 
-Currently, two official plugins are available:
+Parzer は、パーツや道具の消耗を管理するWebアプリです。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+例えばロードバイクのパーツごと、あるいはランニングシューズといった道具の走行距離を管理できます。
 
-## Expanding the ESLint configuration
+# 機能の構想
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- パーツを登録。
+  - パーツには名前、使用開始日、種類、アイコン等を設定。
+- グループとしてパーツをまとめて管理・登録。
+- アクティビティを登録。
+  - 名前、日付、走行距離を設定。
+    - GPXファイルによる自動登録も。
+  - 使用したパーツ（およびパーツグループ）を設定。
+- パーツごとの累積距離を表示。
+- パーツごとに設定した距離を超過するとアラートを表示。
+- データはとりあえず localStrage への保存と、テキストファイルへの出力。
+  - Webシステムとしての動作は必要に応じてそのうち。
 
-- Configure the top-level `parserOptions` property like this:
+# モチベーション
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+主にサイクリングにおいてパーツごとの消耗状態を管理し、安全・快適に楽しみたいからです。
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+アクティビティを記録できるWebサービスである Strava では、アクティビティに使用したギアを登録し、累積距離を管理できます。ただサイクリングだとバイク単位の登録で、パーツ交換にも対応してはいますが、パーツを頻繁に付け外ししたり組み替えたりするようなケースに対応していません。そうしたケースでもきちんと累積距離・消耗状態を管理するためのサービスを作っています。
